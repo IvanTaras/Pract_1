@@ -1,23 +1,23 @@
 # Усложненный make-file. Введены переменные для параметров компиляции и исполняемых файлов
 
-.ФАЛЬШИВЫЙ: все отладочные версии чистые
+.PHONY: all debug release clean
 
-ВЫПУСК_ФЛАГОВ = -O2 -Wall -DNDEBUG
-DEBUG_FLAGS = -g -O0 -Стена
-ВЫПУСК_EXEC = Казинороял
+RELEASE_FLAGS = -O2 -Wall -DNDEBUG
+DEBUG_FLAGS = -g -O0 -Wall
+RELEASE_EXEC = Kazino-Royal
 DEBUG_EXEC = Kazino-Royal-dbg
-ИСТОЧНИК = Kazino-Royal.cpp
+SOURCE = Kazino-Royal.cpp
 
-все: отладочный релиз
+all: debug release
 
-отладка: $(DEBUG_EXEC)
+debug: $(DEBUG_EXEC)
 
-Казинороял-dbg: Kazino-Royal.cpp
- g++ $(DEBUG_FLAGS) Kazino-Royal.cpp -о $(DEBUG_EXEC)  
+Kazino-Royal-dbg: Kazino-Royal.cpp
+ g++ $(DEBUG_FLAGS) Kazino-Royal.cpp -o $(DEBUG_EXEC)  
 
-релиз: $(RELEASE_EXEC)
+release: $(RELEASE_EXEC)
 
-Казинороял: Kazino-Royal.cpp
+Kazino-Royal
  g++ $(RELEASE_FLAGS) Kazino-Royal.cpp -o $(RELEASE_EXEC)
-очистить:
- rm -f $(RELEASE_EXEC)  $(DEBUG_EXEC)
+clean:
+ rm -f $(RELEASE_EXEC) $(DEBUG_EXEC)
